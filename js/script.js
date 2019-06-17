@@ -12,23 +12,31 @@ document.addEventListener('DOMContentLoaded', function() {
 	} // Id for new element
 
 	function generateTemplate(name, data, basicElement) {
-	  var template = document.getElementById(name).innerHTML;
-	  var element = document.createElement(basicElement || 'div');
+		var template = document.getElementById(name).innerHTML;
+		var element = document.createElement(basicElement || 'div');
 
-	  Mustache.parse(template);
-	  element.innerHTML = Mustache.render(template, data);
+		Mustache.parse(template);
+		element.innerHTML = Mustache.render(template, data);
 
-	  return element;
-	  document.createElement(basicElement || 'div'); 
+		return element;
+		document.createElement(basicElement || 'div'); 
 	} // Template Mustache
 
 	function Column(name) {
-	  var self = this;
+		var self = this;
 
-	  this.id = randomString();
-	  this.name = name;
-	  this.element = generateTemplate('column-template', { name: this.name });
+		this.id = randomString();
+		this.name = name;
+		this.element = generateTemplate('column-template', { name: this.name });
+		
+		this.element.querySelector('.column').addEventListener('click', function (event) {
+			if (event.target.classList.contains('btn-delete')) {
+				self.removeColumn();
+			}
+
+			if (event.target.classList.contains('add-card')) {
+				self.addCard(new Card(prompt("Enter the name of the card")));
+			}
+		});		
 	} // Table column
-
-
 });
