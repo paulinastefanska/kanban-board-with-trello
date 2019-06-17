@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 
 			if (event.target.classList.contains('add-card')) {
-				self.addCard(new Card(prompt("Enter the name of the card")));
+				self.addCard(new Card(prompt("Enter the card name")));
 			}
 		});		
 	} // Table column
