@@ -75,11 +75,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var board = {
 	    name: 'Kanban Board',
-	    element: document.querySelector('#board .column-container'),
 	    addColumn: function(column) {
 		  this.element.appendChild(column.element);
 		  initSortable(column.id);
-		}
+		},
+		element: document.querySelector("#board .column-container")
 	};
 
 	function initSortable(id) {
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  });
 	}
 
-	document.querySelector('#board .create-column').addEventListener('click', function() {
+	var addColumn = document.querySelector('#board .create-column').addEventListener('click', function() {
 	    var name = prompt('Enter a column name');
 	    var column = new Column(name);
 	    board.addColumn(column);
