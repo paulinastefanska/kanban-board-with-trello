@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	        str += chars[Math.floor(Math.random() * chars.length)];
 	    }
 	    return str;
-	}
-	
+	} // Id for new element
+
 	function generateTemplate(name, data, basicElement) {
 	  var template = document.getElementById(name).innerHTML;
 	  var element = document.createElement(basicElement || 'div');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	  return element;
 	  document.createElement(basicElement || 'div'); 
-	}
+	} // Template Mustache
 
 	function Column(name) {
 	  var self = this;
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  this.id = randomString();
 	  this.name = name;
 	  this.element = generateTemplate('column-template', { name: this.name });
-	}
+	} // Table column
+
 
 });
