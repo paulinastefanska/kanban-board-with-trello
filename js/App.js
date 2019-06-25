@@ -24,7 +24,7 @@ fetch(baseUrl + '/board', { headers: myHeaders })
 		setupColumns(resp.columns);
 }); 
 
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
 	function randomString() {
 	    var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
 	    var str = '';
@@ -32,7 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	        str += chars[Math.floor(Math.random() * chars.length)];
 	    }
 	    return str;
-	}; // Id for new element
+	}; // Id for new element*/
+
+function setupColumns(columns) {
+  	columns.forEach(function(column) {
+		var col = new Column(column.id, column.name);
+      	board.addColumn(col);
+  	});
+}
 
 	// CREATING COLUMNS
 	var todoColumn = new Column('To do');
