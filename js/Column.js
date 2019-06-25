@@ -1,8 +1,8 @@
-function Column(name) {
+function Column(id, name) {
 	var self = this;
 
-	this.id = randomString();
-	this.name = name;
+	this.id = id;
+	this.name = name || 'No name given';
 	this.element = generateTemplate('column-template', { 
 		id: this.id,
 		name: this.name 

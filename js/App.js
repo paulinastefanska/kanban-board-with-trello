@@ -1,10 +1,4 @@
-var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
-var myHeaders = {
-  'X-Client-Id': 'X-Client-Id',
-  'X-Auth-Token': 'X-Auth-Token'
-}; // Server connection
-
-// Template Mustache general function
+// Template Mustache generate function
 function generateTemplate(name, data, basicElement) {
 	var template = document.getElementById(name).innerHTML;
 	var element = document.createElement(basicElement || 'div');
@@ -15,7 +9,35 @@ function generateTemplate(name, data, basicElement) {
 	return element;
 };
 
-// Function polls the server about the array resource
+/* API endpoint: 
+    GET https://kodilla.com/pl/bootcamp-api/board */
+
+var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+var myHeaders = {
+  'X-Client-Id': 'X-Client-Id',
+  'X-Auth-Token': 'X-Auth-Token'
+}; // Server connection
+
+/* 
+GET /board
+-----------------------------
+Response:
+{
+   id: int,
+   name: string,
+   columns: [{
+       id: int,
+       name: string,
+       cards: [{
+           id: int,
+           bootcamp_kanban_column_id: int,
+           name: string
+       }]
+   }]
+}
+*/
+
+// Function polls the server about the array resource - after page refresh
 fetch(baseUrl + '/board', { headers: myHeaders })
 	.then(function(resp) {
 		return resp.json();
@@ -24,16 +46,7 @@ fetch(baseUrl + '/board', { headers: myHeaders })
 		setupColumns(resp.columns);
 }); 
 
-/*document.addEventListener('DOMContentLoaded', function() {
-	function randomString() {
-	    var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
-	    var str = '';
-	    for (var i = 0; i < 10; i++) {
-	        str += chars[Math.floor(Math.random() * chars.length)];
-	    }
-	    return str;
-	}; // Id for new element*/
-
+// Creating columns after page refresh
 function setupColumns(columns) {
   	columns.forEach(function(column) {
 		var col = new Column(column.id, column.name);
@@ -49,6 +62,7 @@ function setupColumns(columns) {
   });
 }
 
+// Creating cards after page refresh
 function setupCards(col, cards) {
 	cards.forEach(function (card) {
     var cardObj = new Card(card.id, card.name);
