@@ -4,3 +4,4 @@ Used technologies: HTML, CSS/SASS, JavaScript, Flexbox, NPM. <br>
 Used JS plugins: <br>
 - Mustache - template <br>
 - Sortable - drag-and-drop lists <br>
+Edit: modification with added Ajax and API.
