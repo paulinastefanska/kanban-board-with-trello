@@ -1,4 +1,28 @@
-"use strict";
+var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
+var myHeaders = {
+  'X-Client-Id': 'X-Client-Id',
+  'X-Auth-Token': 'X-Auth-Token'
+}; // Server connection
+
+// Template Mustache general function
+function generateTemplate(name, data, basicElement) {
+	var template = document.getElementById(name).innerHTML;
+	var element = document.createElement(basicElement || 'div');
+
+	Mustache.parse(template);
+	element.innerHTML = Mustache.render(template, data);
+
+	return element;
+};
+
+// Function polls the server about the array resource
+fetch(baseUrl + '/board', { headers: myHeaders })
+	.then(function(resp) {
+		return resp.json();
+	})
+	.then(function(resp) {
+		setupColumns(resp.columns);
+}); 
 
 document.addEventListener('DOMContentLoaded', function() {
 	function randomString() {
@@ -9,16 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	    }
 	    return str;
 	}; // Id for new element
-
-	function generateTemplate(name, data, basicElement) {
-		var template = document.getElementById(name).innerHTML;
-		var element = document.createElement(basicElement || 'div');
-
-		Mustache.parse(template);
-		element.innerHTML = Mustache.render(template, data);
-
-		return element;
-	}; // Template Mustache
 
 	// CREATING COLUMNS
 	var todoColumn = new Column('To do');
@@ -37,5 +51,3 @@ document.addEventListener('DOMContentLoaded', function() {
 	// ADDING CARDS TO COLUMNS
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
-
-});
