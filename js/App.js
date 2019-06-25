@@ -12,10 +12,11 @@ function generateTemplate(name, data, basicElement) {
 /* API endpoint: 
     GET https://kodilla.com/pl/bootcamp-api/board */
 
+var prefix = "https://cors-anywhere.herokuapp.com/";
 var baseUrl = 'https://kodilla.com/pl/bootcamp-api';
 var myHeaders = {
-  'X-Client-Id': 'X-Client-Id',
-  'X-Auth-Token': 'X-Auth-Token'
+  'X-Client-Id': '4110',
+  'X-Auth-Token': '624b6b44c5cbf4ec12c1cdefb8e6fa80'
 }; // Server connection
 
 /* 
@@ -38,7 +39,7 @@ Response:
 */
 
 // Function polls the server about the array resource - after page refresh
-fetch(baseUrl + '/board', { headers: myHeaders })
+fetch(prefix + baseUrl + '/board', { headers: myHeaders })
 	.then(function(resp) {
 		return resp.json();
 	})
