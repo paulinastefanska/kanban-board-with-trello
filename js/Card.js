@@ -1,10 +1,10 @@
 function Card(id, name) {
 	var self = this;
 
-	this.id = randomString();
+	this.id = id;
 	this.name = name || 'No name given';
 	this.element = generateTemplate('card-template', { 
-		description: this.name }, 'li');
+		description: this.name, id: this.id}, 'li');
 
 	this.element.querySelector('.card').addEventListener('click', function (event) {
 		event.stopPropagation();
@@ -14,6 +14,16 @@ function Card(id, name) {
 		}
 	});
 }
+
+/*	DELETE /card/{id}
+	------------------------------
+	Request:
+	{id}: int - id card we want to remove
+	------------------------------
+	Response:
+	{
+	   id: int
+	}	*/
 
 Card.prototype = {
 	removeCard: function() {
@@ -30,15 +40,16 @@ Card.prototype = {
 	      self.element.parentNode.removeChild(self.element);
 	    });
 	},
-}
+};	
 
-/*	DELETE /card/{id}
+/*	PUT /card/{id}
 	------------------------------
 	Request:
-	{id}: int - id card we want to remove
+	{id}: int - id card we want to edit
+	name: string - new name card
+	bootcamp_kanban_column_id: int - the column id to which we want to move the post
 	------------------------------
 	Response:
 	{
-	   id: int
+	id: int
 	}	*/
-

@@ -49,13 +49,6 @@ fetch(prefix + baseUrl + '/board', { headers: myHeaders })
 
 // Creating columns after page refresh
 function setupColumns(columns) {
-  	columns.forEach(function(column) {
-		var col = new Column(column.id, column.name);
-      	board.addColumn(col);
-  	});
-}
-
-function setupColumns(columns) {
   columns.forEach(function (column) {
 		var col = new Column(column.id, column.name);
     board.addColumn(col);
