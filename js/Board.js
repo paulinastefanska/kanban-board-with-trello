@@ -7,6 +7,14 @@ var board = {
     element: document.querySelector('#board .column-container')
 };
 
+function initSortable(id) {
+    var el = document.getElementById(id);
+    var sortable = Sortable.create(el, {
+      group: 'kanban',
+      sort: true
+    });
+}
+
 document.querySelector('#board .create-column').addEventListener('click', function() {
   var name = prompt('Enter a column name');
   var data = new FormData();
@@ -27,13 +35,6 @@ document.querySelector('#board .create-column').addEventListener('click', functi
     });
 });
 
-function initSortable(id) {
-    var el = document.getElementById(id);
-    var sortable = Sortable.create(el, {
-      group: 'kanban',
-      sort: true
-    });
-}
 
 /*  ==============================
   POST /column

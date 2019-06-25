@@ -38,7 +38,7 @@ Response:
 }
 */
 
-// Function polls the server about the array resource - after page refresh
+// Request server about the array resource - after page refresh
 fetch(prefix + baseUrl + '/board', { headers: myHeaders })
 	.then(function(resp) {
 		return resp.json();
