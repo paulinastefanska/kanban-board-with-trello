@@ -2,7 +2,7 @@
 ### See [DEMO](https://paulinastefanska.github.io/kanban-board-with-trello)
 
 ## Tech stack: 
--HTML, 
+- HTML, 
 - CSS/SASS, 
 - JavaScript, 
 - Ajax, API, 
